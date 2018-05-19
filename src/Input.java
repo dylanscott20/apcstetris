@@ -1,14 +1,9 @@
 import java.awt.Component;
 import java.awt.event.*;
 
-public class Input implements KeyListener {
+public class Input implements KeyListener{
 
         private boolean[] keys = new boolean[256];
-
-        public Input(Component c)
-        {
-            c.addKeyListener(this);
-        }
 
         public boolean isKeyDown(int keyCode)
         {
@@ -35,7 +30,6 @@ public class Input implements KeyListener {
                 keys[e.getKeyCode()] = false;
             }
         }
-
-        public void keyTyped(KeyEvent e){}
+        public void keyTyped(KeyEvent e) {}
 }
 
