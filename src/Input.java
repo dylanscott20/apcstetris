@@ -5,6 +5,10 @@ public class Input implements KeyListener{
 
         private boolean[] keys = new boolean[256];
 
+        public Input(Component e) {
+            e.addKeyListener(this);
+        }
+
         public boolean isKeyDown(int keyCode)
         {
             if (keyCode > 0 && keyCode < 256)

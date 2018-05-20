@@ -19,9 +19,7 @@ public class Display extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(Grid);
         pack();
-
-        input = new Input();
-        Grid.addKeyListener(input);
+        input = new Input(Grid);
         Grid.setFocusable(true);
     }
 
