@@ -1,45 +1,41 @@
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import javax.swing.border.Border;
+import java.awt.*;
 
-public class Display extends JFrame {
+public class Display extends JFrame{
+    private int col = 10;
+    private int row = 20;
 
-    private JPanel Grid;
-    private JRadioButton u;
-    private JRadioButton r;
-    private JRadioButton l;
-    private JRadioButton d;
-
-    private boolean[] keys = new boolean[256];
+    private JPanel main;
+    private JPanel grid;
+    private TileGrid tileGrid;
+    private JPanel scoreboard;
     private Input input;
+
 
     public Display(String label) {
         super(label);
-        //setSize(150,150);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setContentPane(Grid);
+        setup();
         pack();
-        input = new Input(Grid);
-        Grid.setFocusable(true);
     }
 
     public Input getInput() {
-        return input;
+            return input;
     }
 
-    public void setLeft(boolean t) {
-        l.setSelected(t);
+    private void setup() {
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        tileGrid = new TileGrid(col,row);
+        setContentPane(main);
+
+        input = new Input(main);
+        main.setFocusable(true);
+        grid.add(tileGrid);
+        setResizable(false);
+        //tileGrid.setTile(0,0,new Tile(Color.green));
     }
 
-    public void setRight(boolean t) {
-        r.setSelected(t);
-    }
-
-    public void setUp(boolean t) {
-        u.setSelected(t);
-    }
-
-    public void setDown(boolean t) {
-        d.setSelected(t);
+    public void setTile(int col, int row, Tile tile) {
+        tileGrid.setTile(col,row,tile);
     }
 }

@@ -1,60 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Display">
-  <grid id="27dc6" binding="Grid" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="main" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="515" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <hspacer id="e1082">
+      <grid id="ebf62" binding="grid" layout-manager="FlowLayout" hgap="0" vgap="0" flow-align="1">
         <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="1.0"/>
         </constraints>
-      </hspacer>
-      <component id="75ae4" class="javax.swing.JRadioButton" binding="u">
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
+      <grid id="c5b2" binding="scoreboard" layout-manager="GridBagLayout">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.5" weighty="0.0"/>
         </constraints>
-        <properties>
-          <horizontalAlignment value="0"/>
-          <selected value="false"/>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="cfff4" class="javax.swing.JRadioButton" binding="l">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <horizontalAlignment value="0"/>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="340e2" class="javax.swing.JRadioButton" binding="r">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <horizontalAlignment value="0"/>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="ea18e" class="javax.swing.JRadioButton" binding="d">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <selected value="false"/>
-          <text value=""/>
-        </properties>
-      </component>
-      <hspacer id="feec4">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
     </children>
   </grid>
 </form>
