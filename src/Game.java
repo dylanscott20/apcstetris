@@ -14,10 +14,14 @@ public class Game {
     private int tetrisS[][] = {{0,1,1}, {1,1,0}};
     private int tetrisO[][] = {{1,1}, {1,1}};
     private int tetrisI[][] = {{1},{1},{1},{1}};
+
     private int nextPiece[][];
+    private Color nextColor;
 
     private Color grid[][];
     private Color drop[][];
+    private Point dropPos;
+    private int rotate;
     private TileGrid tileGrid;
     private Display display;
     private Score score;
@@ -30,7 +34,7 @@ public class Game {
         display = new Display("Test");
         tileGrid = new TileGrid(col, row);
         grid = new Color[row+2][col];
-        nextPiece = randomPiece().clone();
+        randomPiece();
         for(int i = 0; i < grid.length; i++) {
             for(int j = 0; j < grid[i].length; j++) {
                 grid[i][j] = DEFAULT;
@@ -40,6 +44,7 @@ public class Game {
 
     public void run() {
         int frame = 0;
+        int rotate = 0;
         while(true) {
             long time = System.currentTimeMillis();
 
@@ -51,14 +56,13 @@ public class Game {
                 if (checkCollision()) {
                     removeRow();
                 } else {
-                    startDrop(nextPiece);
+                    startDrop();
                 }
             } else {
                 if(frame % speed == 0 || in.isKeyWait(KeyEvent.VK_DOWN,5)) {
                     drop();
                 }
             }
-
             if(in.isKeyWait(KeyEvent.VK_LEFT,15)) {
                 moveLeft();
             }
@@ -66,9 +70,12 @@ public class Game {
                 moveRight();
             }
             if(in.isKeyWait(KeyEvent.VK_UP,15)) {
-                rotate();
+                if(rotate < 4) {
+                    rotate++;
+                } else {
+                    rotate = 0;
+                }
             }
-
             display.setTileGrid(tileGrid);
             display.setVisible(true);
             frame++;
@@ -77,24 +84,32 @@ public class Game {
             if(time > 0) {
                 Helper.waitTime((int) time);
             }
+
         }
     }
-    public void startDrop(int[][] piece) {
-        //Puts a random piece in a separate array
-        //Sets isDropping to true
-        //Sets next piece to new random piece
+    public void startDrop() {
+        dropPos = new Point(col/2,0);
+        drop = new Color[nextPiece.length][nextPiece[0].length];
+        for(int i = 0; i < nextPiece.length; i++) {
+            for(int j = 0; j < nextPiece[i].length; j++) {
+                if(nextPiece[i][j] == 1) {
+                    drop[i][j] = nextColor;
+                } else {
+                    drop[i][j] = DEFAULT;
+                }
+            }
+        }
+        isDropping = true;
+        randomPiece();
     }
     public void drop() {
-        //Moves the dropped piece down one tile
+        dropPos.y--;
     }
     public void moveLeft() {
-        //Moves piece to left
+        dropPos.x--;
     }
     public void moveRight() {
-        //Moves piece to right
-    }
-    public void rotate() {
-        //Rotates piece clockwise
+        dropPos.x++;
     }
     public boolean checkCollision() {
         //Checks for collision, allows to slide left or right for a few seconds
@@ -103,12 +118,43 @@ public class Game {
     public void removeRow() {
         //Clears bottom row
     }
-    public int[][] randomPiece() {
-        //Picks a random piece
-        return tetrisI;
+    public void randomPiece() {
+        switch((int) (Math.random() * 7)) {
+            case 0:
+                nextPiece = tetrisT.clone();
+                nextColor = Color.MAGENTA;
+                break;
+            case 1:
+                nextPiece = tetrisL.clone();
+                nextColor = Color.ORANGE;
+                break;
+            case 2:
+                nextPiece = tetrisJ.clone();
+                nextColor = Color.BLUE;
+                break;
+            case 3:
+                nextPiece = tetrisZ.clone();
+                nextColor = Color.RED;
+                break;
+            case 4:
+                nextPiece = tetrisS.clone();
+                nextColor = Color.GREEN;
+                break;
+            case 5:
+                nextPiece = tetrisO.clone();
+                nextColor = Color.YELLOW;
+                break;
+            case 6:
+                nextPiece = tetrisI.clone();
+                nextColor = Color.CYAN;
+                break;
+        }
     }
     public int[][] getNextPiece() {
         return nextPiece;
+    }
+    public Color getNextColor() {
+        return nextColor;
     }
     public void updateTileGrid() {
 
