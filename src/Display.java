@@ -32,10 +32,10 @@ public class Display extends JFrame{
         main.setFocusable(true);
         grid.add(tileGrid);
         setResizable(false);
-        //tileGrid.setTile(0,0,new Tile(Color.green));
     }
 
-    public void setTile(int col, int row, Tile tile) {
-        tileGrid.setTile(col,row,tile);
+    public void setTileGrid(TileGrid t) {
+        grid.removeAll();
+        grid.add(t);
     }
 }
