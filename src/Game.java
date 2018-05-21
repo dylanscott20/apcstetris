@@ -72,7 +72,7 @@ public class Game {
             display.setTileGrid(tileGrid);
             display.setVisible(true);
             frame++;
-            
+
             time = (1000/FPS) - (System.currentTimeMillis() - time);
             if(time > 0) {
                 Helper.waitTime((int) time);

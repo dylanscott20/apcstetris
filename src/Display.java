@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
 
 public class Display extends JFrame{
     private int col = 10;
