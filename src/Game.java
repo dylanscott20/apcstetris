@@ -21,7 +21,7 @@ public class Game {
     private Color grid[][];
     private Color drop[][];
     private Point dropPos;
-    private int rotate;
+    private int curRotation;
     private TileGrid tileGrid;
     private Display display;
     private Score score;
@@ -53,9 +53,8 @@ public class Game {
             //LOOP
 
             if(!isDropping) {
-                if (checkCollision()) {
-                    removeRow();
-                } else {
+                if(!removeRow());
+                {
                     startDrop();
                 }
             } else {
@@ -70,12 +69,9 @@ public class Game {
                 moveRight();
             }
             if(in.isKeyWait(KeyEvent.VK_UP,15)) {
-                if(rotate < 4) {
-                    rotate++;
-                } else {
-                    rotate = 0;
-                }
+                rotate();
             }
+            updateTileGrid();
             display.setTileGrid(tileGrid);
             display.setVisible(true);
             frame++;
@@ -103,20 +99,28 @@ public class Game {
         randomPiece();
     }
     public void drop() {
-        dropPos.y--;
+        if(checkCollision(0)) {
+            dropPos.y--;
+        }
     }
     public void moveLeft() {
-        dropPos.x--;
+        if(checkCollision(-1)) {
+            dropPos.x--;
+        }
     }
     public void moveRight() {
-        dropPos.x++;
+        if(checkCollision(1)) {
+            dropPos.x++;
+        }
     }
-    public boolean checkCollision() {
-        //Checks for collision, allows to slide left or right for a few seconds
+    public boolean checkCollision(int direction) {
+        //Checks if moving piece in direction will cause collision
+        //Also checks if it will cause ArrayOutOfBounds
         return false;
     }
-    public void removeRow() {
-        //Clears bottom row
+    public boolean removeRow() {
+        //Checks if bottom row is full, removes it, then returns if it removed a row
+        return false;
     }
     public void randomPiece() {
         switch((int) (Math.random() * 7)) {
@@ -157,6 +161,9 @@ public class Game {
         return nextColor;
     }
     public void updateTileGrid() {
-
+        //Updates GUI to represent grid[][]
+    }
+    public void rotate() {
+        //Rotates
     }
 }
