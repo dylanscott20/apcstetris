@@ -32,8 +32,8 @@ public class Display extends JFrame{
     }
 
     public void setTileGrid(TileGrid t) {
-        grid.removeAll();
-        grid.add(t);
-        grid.setVisible(true);
+            grid.removeAll();
+            grid.add(t);
+            grid.setVisible(true);
     }
 }

@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        Game game = new Game();
-        game.run();
-    }
-    public static void h() {
-        System.out.println("hello");
+        Display d  = new Display("Tetris");
+        while(true) {
+            Game game = new Game(d);
+            game.run();
+        }
     }
 }
