@@ -3,4 +3,7 @@ public class Main {
         Game game = new Game();
         game.run();
     }
+    public static void h() {
+        System.out.println("hello");
+    }
 }

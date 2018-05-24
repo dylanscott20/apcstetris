@@ -15,4 +15,7 @@ public class Tile extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.GRAY,2));
         setBackground(c);
     }
+    public Color getColor() {
+        return getBackground();
+    }
 }

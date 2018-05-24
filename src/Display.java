@@ -25,9 +25,8 @@ public class Display extends JFrame{
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         tileGrid = new TileGrid(col,row);
         setContentPane(main);
-
-        input = new Input(main);
-        main.setFocusable(true);
+        input = new Input(grid);
+        grid.setFocusable(true);
         grid.add(tileGrid);
         setResizable(false);
     }
@@ -35,5 +34,6 @@ public class Display extends JFrame{
     public void setTileGrid(TileGrid t) {
         grid.removeAll();
         grid.add(t);
+        grid.setVisible(true);
     }
 }
