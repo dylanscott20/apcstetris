@@ -24,7 +24,10 @@ public class Display extends JFrame{
     private void setup() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         tileGrid = new TileGrid(col,row);
+        main = new JPanel();
         setContentPane(main);
+        grid = new JPanel();
+        main.add(grid);
         input = new Input(grid);
         grid.setFocusable(true);
         grid.add(tileGrid);
