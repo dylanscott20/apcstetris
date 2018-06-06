@@ -27,7 +27,6 @@ public class Game {
     private int offset;
     private TileGrid tileGrid;
     private Display display;
-    private Score score;
     private int totalLines;
 
     private boolean isDropping = false;
@@ -115,7 +114,6 @@ public class Game {
             }
 
             updateTileGrid();
-            updateScore();
             display.setTileGrid(tileGrid);
             display.setVisible(true);
             frame++;
@@ -244,7 +242,6 @@ public class Game {
         //Checks if any rows are full, and removes full rows
         ArrayList<Color[]> gridList = new ArrayList<Color[]>(Arrays.asList(grid));
         Collections.reverse(gridList);
-        int linesRemoved = 0;
         Color[] empty = new Color[col];
         for (int i = 0; i < empty.length; i++) {
             empty[i] = DEFAULT;
@@ -261,13 +258,11 @@ public class Game {
                 gridList.remove(i);
                 gridList.add(empty);
                 i--;
-                linesRemoved++;
                 totalLines++;
             }
         }
         System.out.println(totalLines);
         Collections.reverse(gridList);
-        scoreAdd(linesRemoved);
         grid = gridList.toArray(new Color[row][col]);
     }
 
@@ -310,16 +305,7 @@ public class Game {
                 break;
         }
     }
-
-    public void scoreAdd(int lines) {
-
-    }
-
-    public void updateScore() {
-        //Adds nextPiece and nextColor to score
-        //Updates scoreboard with pieces, colors, and score
-    }
-
+    
     public void updateTileGrid() {
         //Updates GUI to represent grid[][] and drop[][]
         TileGrid tGrid = new TileGrid(col, row);

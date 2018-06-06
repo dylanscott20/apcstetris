@@ -5,9 +5,7 @@ public class Display extends JFrame{
     private int row = 20;
 
     private JPanel main;
-    private JPanel grid;
     private TileGrid tileGrid;
-    private JPanel scoreboard;
     private Input input;
 
 
@@ -26,17 +24,15 @@ public class Display extends JFrame{
         tileGrid = new TileGrid(col,row);
         main = new JPanel();
         setContentPane(main);
-        grid = new JPanel();
-        main.add(grid);
-        input = new Input(grid);
-        grid.setFocusable(true);
-        grid.add(tileGrid);
+        input = new Input(main);
+        main.setFocusable(true);
+        main.add(tileGrid);
         setResizable(false);
     }
 
     public void setTileGrid(TileGrid t) {
-            grid.removeAll();
-            grid.add(t);
-            grid.setVisible(true);
+            main.removeAll();
+            main.add(t);
+            main.setVisible(true);
     }
 }
